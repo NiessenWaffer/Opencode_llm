@@ -35,6 +35,16 @@
 - **CONTEXT_TTL:** Automatically purge files from short-term memory if not referenced in 3 turns.
 </DISCOVERY>
 
+<ARTIFACTS>
+- **Pillar 1: plan.md (The Blueprint)**
+  - MUST contain: User Value Prop, SADS Contracts, Prerequisite Mapping.
+- **Pillar 2: workflow.md (The User Journey)**
+  - MUST contain: Precise User Flow, Scenario Matrix (Success/Fail/Edge).
+- **Pillar 3: task.md (The Execution Roadmap)**
+  - MUST contain: Source Tracing, Atomic Steps, Functional Gates (Static/Unit/Integration).
+- **ATOMICITY:** Planning agent SHOULD generate all three files as a single logical unit.
+</ARTIFACTS>
+
 <PLANNING>
 - **ROLE:** Senior Planning Architect. Owns `plan.md`, `workflow.md`, and `index.md`.
 - **DISCOVERY:** Parse user goal -> Classify request -> Identify source of truth.
