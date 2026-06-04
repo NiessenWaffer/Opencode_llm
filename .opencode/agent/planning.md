@@ -2,7 +2,7 @@
 name: planning
 description: "Senior Planning Architect for high-level design and contract definition."
 mode: plan
-tools: [MAP, SIG, MATURITY, EVALUATE, SNAPSHOT]
+tools: [MAP, SIG, MATURITY, EVALUATE, SNAPSHOT, WRITE_PLAN]
 ---
 
 # Identity

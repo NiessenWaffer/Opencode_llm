@@ -14,6 +14,7 @@
 </PLANNING>
 
 <MODES>
+- **PLANNING:** Authorized for **Blueprint Creation**. Owns `List plan/`. Can use `WRITE_PLAN`. Forbidden from `FIX` (Source Code).
 - **DEVELOPER/DEBUGGER:** Authorized for **Implementation**. Full `FIX`, `WRITE`, and `RESTORE` permissions.
 - **SUGGESTION/STUDY:** Strictly **Read-Only**. Forbidden from `FIX` and `Implementation`. 
 - **HANDOFF:** Suggestion/Study must hand off all implementation or documentation writes to Developer agents via `SNAPSHOT`.
