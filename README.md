@@ -1,49 +1,30 @@
 # OpenCode AI Mode Intelligence
 
-An industrial-grade AI orchestration system for [OpenCode CLI](https://opencode.ai), designed for safe, precise, and high-performance engineering in large-scale codebases.
+Industrial-grade AI orchestration for [OpenCode CLI](https://opencode.ai). Safe, precise, and high-performance engineering in large-scale codebases.
 
-## 🚀 Quick Install
+## 🚀 One-Click Install (Recommended)
 
-### 1. Local Agent Setup
-Copy the `.opencode/` folder to your project root. This installs the specialized AI personas:
-- **Planning:** The Senior Architect and Project Manager.
-- **Developer:** High-signal implementation shell.
-- **Debugger:** Scientific error triage and fixing.
-- **Suggestion/Study:** Read-only optimization and mapping.
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/NiessenWaffer/Opencode_llm.git
+   cd Opencode_llm
+   ```
 
-### 2. Global Tools Installation
-Copy the contents of `install_payload/tools/` to your global OpenCode tools directory:
-- **Windows:** `%USERPROFILE%\.config\opencode\tools\`
-- **Mac/Linux:** `~/.config/opencode/tools/`
+2. **Run the Automated Installer:**
+   - **Windows:** `.\install.ps1`
+   - **Unix/Mac:** `chmod +x install.sh && ./install.sh`
 
-Navigate to your global config folder and install dependencies:
-- **Windows:**
-  ```powershell
-  cd $HOME\.config\opencode\
-  npm install glob typescript @opencode-ai/plugin
-  ```
-- **Mac/Linux:**
-  ```bash
-  cd ~/.config/opencode/
-  npm install glob typescript @opencode-ai/plugin
-  ```
+*These scripts automatically perform environment cleanup, tool deployment, and dependency resolution.*
 
-### 3. Global Approval Gate
-Create the approval file in your global config folder:
-- **Path:** `~/.config/opencode/approve.md`
-- **Function:** Proposals from AI agents require you to add an `[APPROVED]` hash to this file before they can touch your code.
+## ⚠️ Important Troubleshooting
+- **Permission Errors:** Always ensure your terminal is opened in your project directory (e.g., `C:\Users\Name\Projects\Opencode_llm`), **NEVER** in a system directory like `C:\WINDOWS\system32`.
+- **Startup Errors:** If you see "4 of 5 requests failed", ensure `RULES.md` is present in your **project root** directory. The CLI will crash if it finds rule files inside the hidden `.opencode/` folder.
 
-### 4. Initialize Project
-Run the following command to build your project's initial memory map:
-```bash
-opencode run "MAP(root)"
-```
-
-## 🧠 Key Features
-- **The Master Rulebook:** All agents follow a single source of truth in `.opencode/RULES.md`.
-- **Vertical-Slice Implementation:** Logic is built in functional end-to-end chunks.
-- **Verification Ladder:** Mandatory static, unit, and integration testing for every fix.
-- **Ironclad Safety:** Automatic backups, anti-truncation guards, and forbidden path protection.
+## 🧠 System Structure
+- **`.opencode/agent/`**: Contains specialized AI shells.
+- **`RULES.md`**: Master Rulebook (Must remain in project root).
+- **`List plan/`**: Architectural blueprints and workflow roadmaps.
+- **`install_payload/tools/`**: Global utility tools for the Knowledge Broker.
 
 ---
 Built with Meta-Cognitive Precision. Fully autonomous. Senior Architect grade.
