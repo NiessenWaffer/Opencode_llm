@@ -16,10 +16,17 @@ Copy the contents of `install_payload/tools/` to your global OpenCode tools dire
 - **Windows:** `%USERPROFILE%\.config\opencode\tools\`
 - **Mac/Linux:** `~/.config/opencode/tools/`
 
-Install dependencies in your global config folder:
-```bash
-npm install glob typescript @opencode-ai/plugin
-```
+Navigate to your global config folder and install dependencies:
+- **Windows:**
+  ```powershell
+  cd $HOME\.config\opencode\
+  npm install glob typescript @opencode-ai/plugin
+  ```
+- **Mac/Linux:**
+  ```bash
+  cd ~/.config/opencode/
+  npm install glob typescript @opencode-ai/plugin
+  ```
 
 ### 3. Global Approval Gate
 Create the approval file in your global config folder:
