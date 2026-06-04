@@ -29,6 +29,7 @@ npm install glob typescript @opencode-ai/plugin --force
 
 # 4. Agent Refresh
 Write-Host "Updating Agents..."
+Set-Location -Path $PSScriptRoot
 Copy-Item ".opencode\agent\*" -Destination ".opencode\agent" -Force -Recurse
 
 # 4. Initialize Project
