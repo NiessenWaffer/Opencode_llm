@@ -20,12 +20,16 @@ New-Item -ItemType Directory -Force -Path ".opencode\snapshots"
 
 # 2. Copy Tools
 Write-Host "Copying Tools..."
-Copy-Item "install_payload\tools\*" -Destination $ToolsDir -Force
+Copy-Item "install_payload\tools\*" -Destination $ToolsDir -Force -Recurse
 
 # 3. Install Dependencies
 Write-Host "Installing Dependencies..."
 Set-Location -Path $GlobalConfig
-npm install glob typescript @opencode-ai/plugin
+npm install glob typescript @opencode-ai/plugin --force
+
+# 4. Agent Refresh
+Write-Host "Updating Agents..."
+Copy-Item ".opencode\agent\*" -Destination ".opencode\agent" -Force -Recurse
 
 # 4. Initialize Project
 Write-Host "Initializing Project..."

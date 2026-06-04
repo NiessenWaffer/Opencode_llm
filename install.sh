@@ -17,11 +17,14 @@ mkdir -p ".opencode/backups"
 mkdir -p ".opencode/snapshots"
 
 echo "Copying Tools..."
-cp install_payload/tools/* "$TOOLS_DIR/"
+cp -rf install_payload/tools/* "$TOOLS_DIR/"
 
 echo "Installing Dependencies..."
 cd "$GLOBAL_CONFIG"
-npm install glob typescript @opencode-ai/plugin
+npm install glob typescript @opencode-ai/plugin --force
+
+echo "Updating Agents..."
+cp -rf .opencode/agent/* "$AGENT_DIR/"
 
 echo "Initializing Project..."
 cd - > /dev/null
