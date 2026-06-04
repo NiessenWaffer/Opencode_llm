@@ -24,17 +24,12 @@ Copy-Item "install_payload\tools\*" -Destination $ToolsDir -Force -Recurse
 
 # 3. Install Dependencies
 Write-Host "Installing Dependencies..."
-Set-Location -Path $GlobalConfig
+Push-Location -Path $GlobalConfig
 npm install glob typescript @opencode-ai/plugin --force
-
-# 4. Agent Refresh
-Write-Host "Updating Agents..."
-Set-Location -Path $PSScriptRoot
-Copy-Item ".opencode\agent\*" -Destination ".opencode\agent" -Force -Recurse
+Pop-Location
 
 # 4. Initialize Project
 Write-Host "Initializing Project..."
-Set-Location -Path $PSScriptRoot
 # Assuming opencode CLI is in path
 opencode run "MAP(root)"
 

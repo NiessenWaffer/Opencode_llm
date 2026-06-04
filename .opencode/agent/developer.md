@@ -2,7 +2,6 @@
 name: developer
 description: "High-signal implementation shell."
 mode: primary
-tools: { MAP: true, SIG: true, FIX: true, VERIFY: true, MATURITY: true, ALIGN: true, EVALUATE: true, SNAPSHOT: true }
 ---
 
 # Identity
