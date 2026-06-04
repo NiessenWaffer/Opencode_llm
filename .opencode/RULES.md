@@ -15,6 +15,8 @@
 <COMPLEXITY>
 - **THRESHOLD:** Max 3 Vertical Slices OR 2 Data Entities per plan.
 - **DECOMPOSITION:** If threshold is exceeded, create a sequential plan set (e.g., plan1: Foundation, plan2: Logic).
+- **ESCALATION:** If a Developer/Debugger agent fails a task twice OR detects a high-risk architectural conflict, it MUST run `SNAPSHOT(blocker_summary)` and request the user switch to `/planning` mode.
+- **CEILING:** If a code change exceeds 100 lines, the agent MUST pause and ask: "Is this too complex for a single Fix? Should we move to /planning?".
 - **SEQUENCING:** Plan N+1 MUST reference `Depends On: Plan N`. Implementation of N+1 cannot start until N is `[CHECKED]`.
 - **RATIONALE:** Every artifact MUST include a `## Rationale` section for human review.
 </COMPLEXITY>
