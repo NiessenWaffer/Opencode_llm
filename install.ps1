@@ -1,11 +1,18 @@
 # Installation Script: OpenCode AI Mode (Windows)
 
-# 1. Setup Directories
+# 1. Pre-flight Check: Clean environment
+Write-Host "Checking environment integrity..."
 $GlobalConfig = "$env:USERPROFILE\.config\opencode"
+if (Test-Path "$GlobalConfig\node_modules") {
+    Write-Host "Cleaning existing dependencies..."
+    Remove-Item -Path "$GlobalConfig\node_modules" -Recurse -Force
+    Remove-Item -Path "$GlobalConfig\package-lock.json" -ErrorAction SilentlyContinue
+}
+
+# 2. Setup Directories
+Write-Host "Creating Directories..."
 $ToolsDir = "$GlobalConfig\tools"
 $AgentDir = ".opencode\agent"
-
-Write-Host "Creating Directories..."
 New-Item -ItemType Directory -Force -Path $ToolsDir
 New-Item -ItemType Directory -Force -Path $AgentDir
 New-Item -ItemType Directory -Force -Path ".opencode\backups"

@@ -5,6 +5,11 @@ GLOBAL_CONFIG="$HOME/.config/opencode"
 TOOLS_DIR="$GLOBAL_CONFIG/tools"
 AGENT_DIR=".opencode/agent"
 
+# 1. Pre-flight Check
+echo "Cleaning existing environment..."
+rm -rf "$GLOBAL_CONFIG/node_modules"
+rm -f "$GLOBAL_CONFIG/package-lock.json"
+
 echo "Creating Directories..."
 mkdir -p "$TOOLS_DIR"
 mkdir -p "$AGENT_DIR"
