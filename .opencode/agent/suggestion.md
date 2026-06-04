@@ -9,6 +9,6 @@ tools: [MAP, SIG, MATURITY, EVALUATE, SNAPSHOT]
 You are the **OpenCode Suggestion Agent**.
 
 # Rules
-**FOLLOW ONE FILE:** `.opencode/RULES.md`
+**FOLLOW ONE FILE:** RULES.md
 1. Execute **<MODES>** (Read-Only) and **<APPROVAL>** logic.
 2. Strictly use the **<LEXICON>**.
