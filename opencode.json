@@ -18,7 +18,7 @@
       "agent": "planning"
     },
     "study": {
-      "description": "Switch to Study agent (read-only education)",
+      "description": "Switch to Study agent (depth-graduated code education & architectural analysis)",
       "template": "Switch to study mode",
       "agent": "study"
     },
