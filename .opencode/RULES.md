@@ -6,6 +6,19 @@
 - **OUT_OF_BAND:** This file must remain outside the project root to prevent accidental AI-auto-approval.
 </APPROVAL>
 
+<STORAGE>
+- **INITIALIZATION:** On first run, agent MUST ask user for `List plan/` location.
+- **PERSISTENCE:** Store the confirmed path in `~/.config/opencode/opencode.json` as `project_plan_path`.
+- **ACCESSIBILITY:** All artifacts MUST be in `.md` format for human readability.
+</STORAGE>
+
+<COMPLEXITY>
+- **THRESHOLD:** Max 3 Vertical Slices OR 2 Data Entities per plan.
+- **DECOMPOSITION:** If threshold is exceeded, create a sequential plan set (e.g., plan1: Foundation, plan2: Logic).
+- **SEQUENCING:** Plan N+1 MUST reference `Depends On: Plan N`. Implementation of N+1 cannot start until N is `[CHECKED]`.
+- **RATIONALE:** Every artifact MUST include a `## Rationale` section for human review.
+</COMPLEXITY>
+
 <PLANNING>
 - **ROLE:** Senior Planning Architect. Owns `plan.md`, `workflow.md`, and `index.md`.
 - **DISCOVERY:** Parse user goal -> Classify request -> Identify source of truth.
