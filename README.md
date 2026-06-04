@@ -3,14 +3,29 @@
 Industrial-grade AI orchestration for [OpenCode CLI](https://opencode.ai). Safe, precise, and high-performance engineering in large-scale codebases.
 
 ## 🚀 One-Click Install (Recommended)
+## 🚀 Quick Install
 
 1. **Clone the repo:**
    ```bash
    git clone https://github.com/NiessenWaffer/Opencode_llm.git
+   ```
+
+2. **Navigate to the project folder:**
+   ```bash
+   # Git automatically creates the folder 'Opencode_llm'
    cd Opencode_llm
    ```
 
-2. **Run the Automated Installer:**
+3. **Verify you are in the right place:**
+   ```bash
+   # List the files. You MUST see 'install.ps1' listed here.
+   # Windows:
+   dir
+   # Unix/Mac:
+   ls
+   ```
+
+4. **Run the Automated Installer:**
    - **Windows:** `.\install.ps1`
    - **Unix/Mac:** `chmod +x install.sh && ./install.sh`
 
