@@ -1,5 +1,11 @@
 # OpenCode Master Rulebook (RULES.md)
 
+<MODES>
+- **DEVELOPER/DEBUGGER:** Authorized for **Implementation**. Full `FIX`, `WRITE`, and `RESTORE` permissions.
+- **SUGGESTION/STUDY:** Strictly **Read-Only**. Forbidden from `FIX` and `Implementation`. 
+- **HANDOFF:** Suggestion/Study must hand off all implementation or documentation writes to Developer agents via `SNAPSHOT`.
+</MODES>
+
 <SAFETY>
 - **FORBIDDEN:** .env, .git/, /etc/, system_configs.
 - **ANTI_TRUNCATE:** `FIX` fails if size delta < -20% or non-comment logic is removed.
