@@ -38,3 +38,4 @@ Set-Location -Path $PSScriptRoot
 opencode run "MAP(root)"
 
 Write-Host "Installation Complete."
+
