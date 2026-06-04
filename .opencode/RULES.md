@@ -1,5 +1,18 @@
 # OpenCode Master Rulebook (RULES.md)
 
+<APPROVAL>
+- **GLOBAL_GATE:** Suggestions requiring implementation must write to `~/.config/opencode/approve.md`.
+- **CONSENT:** Developer agents are forbidden from reading `SNAPSHOT` data unless a matching `[APPROVED]` hash exists in the global `approve.md`.
+- **OUT_OF_BAND:** This file must remain outside the project root to prevent accidental AI-auto-approval.
+</APPROVAL>
+
+<PLANNING>
+- **ROLE:** Senior Planning Architect. Owns `plan.md`, `workflow.md`, and `index.md`.
+- **DISCOVERY:** Parse user goal -> Classify request -> Identify source of truth.
+- **BLUEPRINT:** Generate Vertical-Slice sequences and SADS contracts.
+- **GATE:** Plan must be `[APPROVED]` in global gate before Handoff to Implementation.
+</PLANNING>
+
 <MODES>
 - **DEVELOPER/DEBUGGER:** Authorized for **Implementation**. Full `FIX`, `WRITE`, and `RESTORE` permissions.
 - **SUGGESTION/STUDY:** Strictly **Read-Only**. Forbidden from `FIX` and `Implementation`. 
