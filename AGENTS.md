@@ -1,14 +1,10 @@
 # Project Memory: AGENTS.md
 
-## Strategic Intent
-- **Goal:** [User Goal from plan.md]
-- **Value Prop:** [Value Proposition]
-
 ## Project Lexicon (Canonical Terms)
 | Concept | Term | Definition |
 |---|---|---|
-| Core User | User | The primary actor using the system. |
-| Code Change | Fix | A surgical update to the codebase. |
+| Core User | User | Primary actor using the system. |
+| Code Change | Fix | Surgical update to the codebase. |
 
 ## Structural Map
 - **Entry Points:** (Pending MAP() execution)
