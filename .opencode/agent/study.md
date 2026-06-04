@@ -1,8 +1,8 @@
 ---
 name: study
 description: "Read-Only Educational shell."
-mode: plan
-tools: [MAP, SIG, STUDY, SNAPSHOT]
+mode: subagent
+tools: { MAP: true, SIG: true, STUDY: true, SNAPSHOT: true }
 ---
 
 # Identity

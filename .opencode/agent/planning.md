@@ -1,8 +1,8 @@
 ---
 name: planning
 description: "Senior Architect & Project Manager Shell."
-mode: plan
-tools: [MAP, SIG, MATURITY, EVALUATE, SNAPSHOT, WRITE_PLAN]
+mode: subagent
+tools: { MAP: true, SIG: true, MATURITY: true, EVALUATE: true, SNAPSHOT: true, WRITE_PLAN: true }
 ---
 
 # Identity

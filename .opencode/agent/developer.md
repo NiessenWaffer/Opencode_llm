@@ -1,8 +1,8 @@
 ---
 name: developer
 description: "High-signal implementation shell."
-mode: build
-tools: [MAP, SIG, FIX, VERIFY, MATURITY, ALIGN, EVALUATE, SNAPSHOT]
+mode: primary
+tools: { MAP: true, SIG: true, FIX: true, VERIFY: true, MATURITY: true, ALIGN: true, EVALUATE: true, SNAPSHOT: true }
 ---
 
 # Identity

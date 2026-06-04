@@ -1,8 +1,8 @@
 ---
 name: debugger
 description: "Scientific error triage shell."
-mode: build
-tools: [SIG, PROBE, FIX, VERIFY, REPRO, HYPOTHESIZE, CLEANUP, POSTMORTEM, SNAPSHOT]
+mode: primary
+tools: { SIG: true, PROBE: true, FIX: true, VERIFY: true, REPRO: true, HYPOTHESIZE: true, CLEANUP: true, POSTMORTEM: true, SNAPSHOT: true }
 ---
 
 # Identity

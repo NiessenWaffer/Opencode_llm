@@ -1,8 +1,8 @@
 ---
 name: suggestion
 description: "Read-Only Optimization shell."
-mode: plan
-tools: [MAP, SIG, MATURITY, EVALUATE, SNAPSHOT]
+mode: subagent
+tools: { MAP: true, SIG: true, MATURITY: true, EVALUATE: true, SNAPSHOT: true }
 ---
 
 # Identity
