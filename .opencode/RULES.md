@@ -21,6 +21,20 @@
 - **RATIONALE:** Every artifact MUST include a `## Rationale` section for human review.
 </COMPLEXITY>
 
+<ROUTING>
+- **BOUNDARY:** Agents MUST NOT traverse outside the `project_root` defined in initialization.
+- **RESTRICTED:** Access to `.git/`, `node_modules/`, and `.env` is strictly READ-ONLY and requires `[SAFETY_OVERRIDE]`.
+- **SENSITIVE:** Any file matching `config/*` or `secrets/*` triggers a mandatory `CONSULT` before reading full content.
+</ROUTING>
+
+<DISCOVERY>
+- **ZOOM_FIRST:** Agents MUST use `MAP()` to see the forest before `read_file()` to see the tree.
+- **SEMANTIC_MAP:** For complex tasks, build a `RELATIONSHIP_MATRIX` showing how File A imports File B.
+- **VECTOR_SEARCH:** For 1000+ files, use a local vector index to find "conceptually related" logic even if they don't share imports.
+- **RELEVANCE_FILTER:** Only read files that score >70% on a "Core Task Relevance" check.
+- **CONTEXT_TTL:** Automatically purge files from short-term memory if not referenced in 3 turns.
+</DISCOVERY>
+
 <PLANNING>
 - **ROLE:** Senior Planning Architect. Owns `plan.md`, `workflow.md`, and `index.md`.
 - **DISCOVERY:** Parse user goal -> Classify request -> Identify source of truth.
