@@ -34,6 +34,41 @@
 - **Custom Tools:** The `MAP`, `SIG`, `FIX`, and `STUDY` operations will be implemented as **TypeScript Tools** in `~/.config/opencode/tools/*.ts`.
 - **Format:** Use **Markdown with YAML Frontmatter** for agents and **TypeScript** for tools.
 
+## Phase 6: Scientific Debugging & Post-Mortem
+- **Reproduction-First Policy:**
+  - The AI is forbidden from applying a `FIX` for a bug until it successfully runs a `REPRO` command that captures the failure.
+  - If a repro is impossible, it must document a "High-Confidence Signal" before proceeding.
+- **Hypothesis-Driven Triage:**
+  - New tool: `HYPOTHESIZE(symptoms)`. 
+  - The agent generates 3-5 root-cause hypotheses and ranks them by "Signal vs. Cost". It executes the cheapest experiment first.
+- **Automated Instrumentation Cleanup:**
+  - The `PROBE` tool is enhanced to track all temporary `console.log` or trace statements added.
+  - Once a fix is verified, the system runs a mandatory `CLEANUP` pass to remove all debugging "noise" from the codebase.
+- **Recursive Post-Mortem:**
+  - After every successful debug, the agent generates a `post_mortem.md` segment for `AGENTS.md`.
+  - It must answer: "How could we have prevented this with a MATURITY check or a Linter rule?"
+- **The Debug Artifact (`debug.md`):**
+  - Every bug-hunt session creates a dedicated `debug.md` in `.opencode/debug/` to track the "Chain of Thought" (Hypotheses -> Experiments -> Results).
+
+## Phase 5: Industrial Implementation Pipeline
+- **Frontend-First Vertical Slicing:**
+  - AI follows a strict sequence: **UI Shell -> Navigation/Routes -> Backend Logic -> Database Persistence -> Seeders**.
+  - This ensures "Visible Value" at every step and prevents building blind backend logic.
+- **The Verification Ladder:**
+  - The `VERIFY` tool is upgraded to a multi-stage ladder:
+    1. `static_read`: Syntax and lint check.
+    2. `type_check`: Type safety validation.
+    3. `unit_test`: Logic verification.
+    4. `integration`: End-to-end flow check.
+    5. `visual_check`: UI/UX alignment.
+- **Checked-Item Protection:**
+  - Once a sub-task is verified and marked `[CHECKED]`, the AI is forbidden from re-working it without an `ESCALATION_EVENT`. This prevents "accidental rework" and regression.
+- **Plan-to-Task Alignment Gate:**
+  - Every task in `task.md` must be explicitly linked to a `source_plan_section` and `source_workflow_step`. 
+  - If a task cannot be traced back to the plan, the agent must trigger `MATURITY` to identify the missing blueprint.
+- **Diff Discipline:**
+  - The agent is instructed to perform **Single-Purpose Commits**. It avoids unrelated refactors in the same implementation turn.
+
 ## Phase 4: Predictive & Zero-Friction Intelligence
 - **Predictive Context Loading (Anticipation):**
   - New tool: `ANTICIPATE(task)`.

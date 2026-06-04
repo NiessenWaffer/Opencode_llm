@@ -27,24 +27,20 @@
 
 ## Backend Contract (Knowledge Broker & DSL)
 1. **Tool implementation:** 
-    - `MAP.ts`: Fast globbing.
-    - `SIG.ts`: AST signature extraction.
-    - `FIX.ts`: Match-Block + Safety.
-    - `VERIFY.ts`: Adversarial Critique.
-    - `ANTICIPATE.ts`: A predictive scanner that builds a dependency graph of the current task.
-    - `SNAPSHOT.ts`: Captures and restores session "Mental State" for mode transitions.
-2. **Debt Monitor:** 
-    - Implement a background process that updates `DEBT.md` whenever a `FIX` is applied with `[TODO]` or `[TEMP]` markers.
+    - `REPRO.ts`: A harness builder that creates minimal reproduction scripts.
+    - `HYPOTHESIZE.ts`: A logic engine that ranks root-cause theories.
+    - `PROBE.ts`: **Auto-Tracking Probe.** Wraps temporary logs in `/* DEBUG_START */` and `/* DEBUG_END */` tags for easy removal.
+    - `CLEANUP.ts`: A tool that surgically removes all `DEBUG` tags.
+    - `POSTMORTEM.ts`: An analyzer that suggests new `MATURITY` rules based on a fixed bug.
+2. **Post-Fix Step:** 
+    - Every successful `FIX` in Debugger mode must be followed by `CLEANUP` -> `POSTMORTEM`.
 
-## Precise User Flow
-1. **User Action:** Starts OpenCode.
-2. **System Response:** Runs `MAP`, `MATURITY`, and `ANTICIPATE`.
-3. **System Feedback:** Displays "Ready. **Anticipating:** Task involves 'Auth', pre-loading related signatures."
-4. **User Action:** Requests /developer change.
-5. **System Response:** 
-    - Loads **Snapshot** from previous planning session.
-    - Executes fix with **Cross-Agent Verification**.
-6. **System Feedback:** Successful fix. "Logged 1 minor refactoring debt to DEBT.md."
+## Precise User Flow (Debugger)
+1. **User Action:** Reports bug.
+2. **System Response:** Runs `HYPOTHESIZE` and creates `debug.md`.
+3. **System Action:** Runs `REPRO`. 
+4. **Logic Loop:** `REPRO Fails` -> `PROBE` -> `REPRO Fails` -> `FIX` -> `REPRO Passes`.
+5. **System Feedback:** "Root cause identified. Cleanup complete. New rule added to MATURITY: 'Always check for null in X'."
 
 ## Verification Flow
 1. **Test Case 7:** Dependency Maturity -> Delete a core config file and verify that the AI's `MATURITY` tool flags the gap before attempting a feature.
