@@ -38,15 +38,66 @@ $SourceAgents = Join-Path $ExtractedDir ".opencode\agents\*"
 Copy-Item -Path $SourceTools -Destination $ToolsDir -Force -Recurse
 Copy-Item -Path $SourceAgents -Destination $AgentsDir -Force -Recurse
 
-# 5. Configure CLI
+# 5. Configure CLI with Global Commands
 Write-Host "Configuring CLI..."
 $ConfigPath = "$GlobalConfig\opencode.jsonc"
-$NewConfig = @{
-    "`$schema" = "https://opencode.ai/config.json"
-    toolsPath = $ToolsDir
-    agentsPath = $AgentsDir
+$NewConfig = @'
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "toolsPath": "TOOLSPLACEHOLDER",
+  "agentsPath": "AGENTSPLACEHOLDER",
+
+  "command": {
+    "developer": {
+      "description": "Run implementation workflow with the Developer agent",
+      "template": "Use Developer mode for implementation. Follow RULES.md <IMPLEMENTATION>, <SAFETY>, and <LEXICON>. User request: $ARGUMENTS",
+      "agent": "developer"
+    },
+    "debugger": {
+      "description": "Run debugging workflow with the Debugger agent",
+      "template": "Use Debugger mode for scientific error triage. Follow RULES.md <DEBUGGING>, <SAFETY>, and <LEXICON>. User request: $ARGUMENTS",
+      "agent": "debugger"
+    },
+    "planning": {
+      "description": "Run planning workflow with the Planning agent",
+      "template": "Use Planning mode for architecture and project management. Follow RULES.md <PLANNING>, <COMPLEXITY>, <ARTIFACTS>, and <LEXICON>. Produce or update plan.md, workflow.md, and task.md when the request requires planning. User request: $ARGUMENTS",
+      "agent": "planning",
+      "subtask": false
+    },
+    "study": {
+      "description": "Run study workflow with the Study agent",
+      "template": "Use Study mode for read-only code education and architectural analysis. Follow the Study agent depth protocol and ask comprehension checks before advancing levels. User request: $ARGUMENTS",
+      "agent": "study",
+      "subtask": false
+    },
+    "suggestion": {
+      "description": "Run read-only optimization workflow with the Suggestion agent",
+      "template": "Use Suggestion mode for read-only optimization advice. Do not edit files. Follow RULES.md <MODES>, <APPROVAL>, and <LEXICON>. User request: $ARGUMENTS",
+      "agent": "suggestion",
+      "subtask": false
+    },
+    "model": {
+      "description": "Show current AI model or switch to a different model",
+      "template": "The user wants to manage the AI model. $ARGUMENTS"
+    },
+    "agent": {
+      "description": "List available agents or switch to a different agent",
+      "template": "The user wants to manage agents. $ARGUMENTS"
+    },
+    "export": {
+      "description": "Export conversation, plans, or project artifacts",
+      "template": "The user wants to export something. $ARGUMENTS"
+    },
+    "connect": {
+      "description": "Connect to external services, APIs, or remote resources",
+      "template": "The user wants to connect to a service. $ARGUMENTS"
+    }
+  }
 }
-$NewConfig | ConvertTo-Json | Set-Content -Path $ConfigPath
+'@
+$NewConfig = $NewConfig.Replace("TOOLSPLACEHOLDER", $ToolsDir).Replace("AGENTSPLACEHOLDER", $AgentsDir)
+Set-Content -Path $ConfigPath -Value $NewConfig
 
 # 6. Install Dependencies
 Write-Host "Installing Dependencies..."
