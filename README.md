@@ -11,8 +11,8 @@ Industrial-grade AI orchestration for [OpenCode CLI](https://opencode.ai). Safe,
    ```
 
 2. **Navigate to the project folder:**
+   If you aren't already inside the 'Opencode_llm' folder created by the clone command, run:
    ```bash
-   # Git automatically creates the folder 'Opencode_llm'
    cd Opencode_llm
    ```
 
