@@ -1,5 +1,8 @@
 # Installation Script: OpenCode AI Mode (Windows)
 
+# Get script location for reliable pathing
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+
 # 1. Pre-flight Check: Clean environment
 Write-Host "Checking environment integrity..."
 $GlobalConfig = "$env:USERPROFILE\.config\opencode"
@@ -22,7 +25,8 @@ New-Item -ItemType Directory -Force -Path "$GlobalConfig\snapshots"
 
 # 2. Copy Tools (Global Only)
 Write-Host "Copying Tools to Global Config..."
-Copy-Item "install_payload\tools\*" -Destination $ToolsDir -Force -Recurse
+$SourceTools = Join-Path -Path $ScriptDir -ChildPath "install_payload\tools\*"
+Copy-Item -Path $SourceTools -Destination $ToolsDir -Force -Recurse
 
 # 3. Install Dependencies
 Write-Host "Installing Dependencies..."
