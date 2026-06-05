@@ -41,12 +41,9 @@ Copy-Item -Path $SourceAgents -Destination $AgentsDir -Force -Recurse
 # 5. Configure CLI with Global Commands
 Write-Host "Configuring CLI..."
 $ConfigPath = "$GlobalConfig\opencode.jsonc"
-$NewConfig = @'
+@'
 {
   "$schema": "https://opencode.ai/config.json",
-
-  "toolsPath": "TOOLSPLACEHOLDER",
-  "agentsPath": "AGENTSPLACEHOLDER",
 
   "command": {
     "developer": {
@@ -95,9 +92,7 @@ $NewConfig = @'
     }
   }
 }
-'@
-$NewConfig = $NewConfig.Replace("TOOLSPLACEHOLDER", $ToolsDir).Replace("AGENTSPLACEHOLDER", $AgentsDir)
-Set-Content -Path $ConfigPath -Value $NewConfig
+'@ | Set-Content -Path $ConfigPath
 
 # 6. Install Dependencies
 Write-Host "Installing Dependencies..."
@@ -109,4 +104,3 @@ Pop-Location
 Remove-Item $TempDir -Recurse -Force
 Write-Host "Installation Complete. Tools and Agents installed to: $GlobalConfig"
 Write-Host "CLI configured to use: $ToolsDir"
-
