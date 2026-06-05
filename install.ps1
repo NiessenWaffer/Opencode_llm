@@ -36,14 +36,23 @@ Write-Host "Copying Tools to Global Config..."
 $SourceTools = Join-Path $ExtractedDir "install_payload\tools\*"
 Copy-Item -Path $SourceTools -Destination $ToolsDir -Force -Recurse
 
-# 5. Install Dependencies
+# 5. Configure CLI
+Write-Host "Configuring CLI..."
+$ConfigPath = "$GlobalConfig\opencode.jsonc"
+$NewConfig = @{
+    "`$schema" = "https://opencode.ai/config.json"
+    toolsPath = $ToolsDir
+}
+$NewConfig | ConvertTo-Json | Set-Content -Path $ConfigPath
+
+# 6. Install Dependencies
 Write-Host "Installing Dependencies..."
 Push-Location -Path $GlobalConfig
 npm install typescript @types/node @opencode-ai/plugin --force
 Pop-Location
 
-# 6. Cleanup and Finalize
+# 7. Cleanup and Finalize
 Remove-Item $TempDir -Recurse -Force
-Write-Host "Installation Complete. Tools installed to: $GlobalConfig\tools"
-Write-Host "Please add $ToolsDir to your system PATH to access tools globally."
+Write-Host "Installation Complete. Tools installed to: $ToolsDir"
+Write-Host "CLI configured to use: $ToolsDir"
 
