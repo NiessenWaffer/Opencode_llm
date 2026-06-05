@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Core intelligence tools for OpenCode AI Mode system.",
   "dependencies": {
+    "@types/node": "^24.0.0",
     "@opencode-ai/plugin": "^1.0.0",
-    "glob": "^10.0.0",
     "typescript": "^5.0.0"
   }
 }

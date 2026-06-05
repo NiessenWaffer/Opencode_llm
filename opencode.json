@@ -1,31 +1,43 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "instructions": ["AGENTS.md"],
+  "default_agent": "developer",
+  "watcher": {
+    "ignore": [
+      ".opencode/node_modules/**",
+      ".opencode/backups/**",
+      ".opencode/snapshots/**",
+      "List plan/**"
+    ]
+  },
   "command": {
     "developer": {
-      "description": "Switch to Developer agent (implementation)",
-      "template": "Switch to developer mode",
+      "description": "Run implementation workflow with the Developer agent",
+      "template": "Use Developer mode for implementation. Follow RULES.md <IMPLEMENTATION>, <SAFETY>, and <LEXICON>. User request: $ARGUMENTS",
       "agent": "developer"
     },
     "debugger": {
-      "description": "Switch to Debugger agent (error triage)",
-      "template": "Switch to debugger mode",
+      "description": "Run debugging workflow with the Debugger agent",
+      "template": "Use Debugger mode for scientific error triage. Follow RULES.md <DEBUGGING>, <SAFETY>, and <LEXICON>. User request: $ARGUMENTS",
       "agent": "debugger"
     },
     "planning": {
-      "description": "Switch to Planning agent (architecture/PM)",
-      "template": "Switch to planning mode",
-      "agent": "planning"
+      "description": "Run planning workflow with the Planning agent",
+      "template": "Use Planning mode for architecture and project management. Follow RULES.md <PLANNING>, <COMPLEXITY>, <ARTIFACTS>, and <LEXICON>. Produce or update plan.md, workflow.md, and task.md when the request requires planning. User request: $ARGUMENTS",
+      "agent": "planning",
+      "subtask": false
     },
     "study": {
-      "description": "Switch to Study agent (depth-graduated code education & architectural analysis)",
-      "template": "Switch to study mode",
-      "agent": "study"
+      "description": "Run study workflow with the Study agent",
+      "template": "Use Study mode for read-only code education and architectural analysis. Follow the Study agent depth protocol and ask comprehension checks before advancing levels. User request: $ARGUMENTS",
+      "agent": "study",
+      "subtask": false
     },
     "suggestion": {
-      "description": "Switch to Suggestion agent (read-only optimization)",
-      "template": "Switch to suggestion mode",
-      "agent": "suggestion"
+      "description": "Run read-only optimization workflow with the Suggestion agent",
+      "template": "Use Suggestion mode for read-only optimization advice. Do not edit files. Follow RULES.md <MODES>, <APPROVAL>, and <LEXICON>. User request: $ARGUMENTS",
+      "agent": "suggestion",
+      "subtask": false
     }
   }
 }

@@ -36,7 +36,9 @@ Industrial-grade AI orchestration for [OpenCode CLI](https://opencode.ai). Safe,
 - **Startup Errors:** If you see "4 of 5 requests failed", ensure `RULES.md` is present in your **project root** directory. The CLI will crash if it finds rule files inside the hidden `.opencode/` folder.
 
 ## 🧠 System Structure
-- **`.opencode/agent/`**: Contains specialized AI shells.
+- **`.opencode/agents/`**: Contains specialized AI shells for current OpenCode versions.
+- **`.opencode/agent/`**: Compatibility copy for older OpenCode loaders.
+- **`.opencode/tools/`**: Project-local custom tools such as `MAP`, `SIG`, `FIX`, and `WRITE_PLAN`.
 - **`RULES.md`**: Master Rulebook (Must remain in project root).
 - **`List plan/`**: Architectural blueprints and workflow roadmaps.
 - **`install_payload/tools/`**: Global utility tools for the Knowledge Broker.
