@@ -31,10 +31,12 @@ New-Item -ItemType Directory -Force -Path $AgentsDir
 New-Item -ItemType Directory -Force -Path "$GlobalConfig\backups"
 New-Item -ItemType Directory -Force -Path "$GlobalConfig\snapshots"
 
-# 4. Copy Tools (Global Only)
-Write-Host "Copying Tools to Global Config..."
+# 4. Copy Tools and Agents (Global Only)
+Write-Host "Copying Tools and Agents to Global Config..."
 $SourceTools = Join-Path $ExtractedDir "install_payload\tools\*"
+$SourceAgents = Join-Path $ExtractedDir ".opencode\agents\*"
 Copy-Item -Path $SourceTools -Destination $ToolsDir -Force -Recurse
+Copy-Item -Path $SourceAgents -Destination $AgentsDir -Force -Recurse
 
 # 5. Configure CLI
 Write-Host "Configuring CLI..."
@@ -42,6 +44,7 @@ $ConfigPath = "$GlobalConfig\opencode.jsonc"
 $NewConfig = @{
     "`$schema" = "https://opencode.ai/config.json"
     toolsPath = $ToolsDir
+    agentsPath = $AgentsDir
 }
 $NewConfig | ConvertTo-Json | Set-Content -Path $ConfigPath
 
@@ -53,6 +56,6 @@ Pop-Location
 
 # 7. Cleanup and Finalize
 Remove-Item $TempDir -Recurse -Force
-Write-Host "Installation Complete. Tools installed to: $ToolsDir"
+Write-Host "Installation Complete. Tools and Agents installed to: $GlobalConfig"
 Write-Host "CLI configured to use: $ToolsDir"
 
