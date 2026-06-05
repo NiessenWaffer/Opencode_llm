@@ -2,46 +2,28 @@
 
 Industrial-grade AI orchestration for [OpenCode CLI](https://opencode.ai). Safe, precise, and high-performance engineering in large-scale codebases.
 
-## 🚀 One-Click Install (Recommended)
-## 🚀 Quick Install
+## 🚀 Direct Global Installation
+You can install the OpenCode toolchain directly without cloning the repository.
 
-1. **Clone the repo:**
-   ```bash
-   git clone https://github.com/NiessenWaffer/Opencode_llm.git
-   ```
+### For Windows (PowerShell)
+Run the following command in your terminal:
+```powershell
+irm https://raw.githubusercontent.com/NiessenWaffer/Opencode_llm/main/install.ps1 | iex
+```
 
-2. **Navigate to the project folder:**
-   If you aren't already inside the 'Opencode_llm' folder created by the clone command, run:
-   ```bash
-   cd Opencode_llm
-   ```
+### For Unix/Mac
+Run the following command in your terminal:
+```bash
+curl -fsSL https://raw.githubusercontent.com/NiessenWaffer/Opencode_llm/main/install.sh | bash
+```
 
-3. **Verify you are in the right place:**
-   ```bash
-   # List the files. You MUST see 'install.ps1' listed here.
-   # Windows:
-   dir
-   # Unix/Mac:
-   ls
-   ```
+*This installs tools to: `%USERPROFILE%\.config\opencode\tools` (Windows) or `$HOME/.config/opencode/tools` (Unix).*
 
-4. **Run the Automated Installer:**
-   - **Windows:** `.\install.ps1`
-   - **Unix/Mac:** `chmod +x install.sh && ./install.sh`
-
-*These scripts automatically perform environment cleanup, tool deployment, and dependency resolution.*
-
-## ⚠️ Important Troubleshooting
-- **Permission Errors:** Always ensure your terminal is opened in your project directory (e.g., `C:\Users\Name\Projects\Opencode_llm`), **NEVER** in a system directory like `C:\WINDOWS\system32`.
-- **Startup Errors:** If you see "4 of 5 requests failed", ensure `RULES.md` is present in your **project root** directory. The CLI will crash if it finds rule files inside the hidden `.opencode/` folder.
+### Enable Global Access (Important)
+To run OpenCode tools from any project folder, add the installation directory to your system `PATH`:
+- **Windows:** Add `C:\Users\<YourUsername>\.config\opencode\tools` to your environment PATH.
+- **Unix/Mac:** Add `export PATH="$HOME/.config/opencode/tools:$PATH"` to your `.bashrc` or `.zshrc`.
 
 ## 🧠 System Structure
-- **`.opencode/agents/`**: Contains specialized AI shells for current OpenCode versions.
-- **`.opencode/agent/`**: Compatibility copy for older OpenCode loaders.
-- **`.opencode/tools/`**: Project-local custom tools such as `MAP`, `SIG`, `FIX`, and `WRITE_PLAN`.
-- **`RULES.md`**: Master Rulebook (Must remain in project root).
-- **`List plan/`**: Architectural blueprints and workflow roadmaps.
-- **`install_payload/tools/`**: Global utility tools for the Knowledge Broker.
-
----
-Built with Meta-Cognitive Precision. Fully autonomous. Senior Architect grade.
+- **Global Config (`~/.config/opencode/`):** Centralized installation of all tools, agents, and dependencies.
+- **Project Root (`RULES.md`):** Your project-specific configuration. Keep this in your project root to enable tool orchestration.
